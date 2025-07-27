@@ -1,7 +1,7 @@
 // Твои данные: username и repo (без .github.io)
-const githubUsername = 'YOUR_USERNAME';
-const githubRepo = 'YOUR_REPO';
-const imagesFolder = 'images'; // Папка с изображениями
+const githubUsername = 'alexander-topilskii';
+const githubRepo = 'Instructions';
+const imagesFolder = 'imgs'; // Папка с изображениями
 
 // Поддерживаемые расширения
 const supportedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
