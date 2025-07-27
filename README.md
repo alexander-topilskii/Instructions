@@ -1,7 +1,7 @@
 <img width="1920" height="600" alt="image" src="https://github.com/user-attachments/assets/85b1982d-c0d0-43ca-a384-c8c8a48b42ab" />
 
 
-# 🐾 Vault 102: Temporary Shelter & Cat Supervision Protocol
+# 🐾 Vault 102: Временное убежище & Кот надзорный протокол
 
 > *“Welcome to your brief but glorious service, Citizen!”*  
 > — Vault-Tec Introductory Broadcast, Rev. 6.4
