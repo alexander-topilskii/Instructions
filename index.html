@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение на работу в Vault-Tec</title>
+    <title>Vault-Tec Birthday Invitation</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,44 +12,14 @@
             <img id="current-image" src="" alt="Vault-Tec Instruction" style="display: none;">
             <div id="loading">Ожидайте...</div>
             <div class="scanlines"></div>
+            <div class="distortion"></div> <!-- Новый слой для искажения -->
         </div>
         <div class="controls">
             <button onclick="prevImage()">◄ PREV</button>
             <span id="page-counter">Page 1</span>
             <button onclick="nextImage()">NEXT ►</button>
         </div>
-        <div class="info">
-            <p>Добро пожаловать, <span id="user-name">гражданин</span>!</p>
-
-            <p>
-                Вы <b>временно<b> назначены на должность <strong>Смотрителя Убежища №102</strong>.<br>
-                (<em>Повторяем: временно. Всего на пару дней. Честное слово.</em>)
-            </p>
-
-            <p>
-                Vault-Tec искренне благодарит вас за готовность поддерживать порядок, мораль и работу жизненно важных систем
-                до прибытия... <em>более квалифицированного персонала</em>.
-            </p>
-
-            <p>
-                Пожалуйста, ознакомьтесь с <strong>Руководством для начинающего смотрителя</strong> (ред. 3.7) и всегда помните:
-            </p>
-
-            <ul>
-                <li><strong>Vault-Tec следит за вами.</strong></li>
-                <li><strong>Всё под контролем.</strong></li>
-                <li><strong>Это точно не навсегда. Наверное.</strong></li>
-            </ul>
-
-            <hr>
-
-            <p><strong>Дата начала дежурства:</strong> <span id="start-full"></span></p>
-            <p><strong>Дата завершения дежурства:</strong> <span id="end-full"></span></p>
-            
-            <hr>
-
-            <p><em>Благодарим за вашу верную службу корпорации Vault-Tec и человечеству.</em></p>
-        </div>
+        <div class="content"></div> <!-- Пустой div для динамического контента -->
     </div>
     <script src="script.js"></script>
 </body>
