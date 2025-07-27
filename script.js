@@ -29,8 +29,8 @@ const months = ['января', 'февраля', 'марта', 'апреля', 
 
 // Получаем параметры из URL
 const urlParams = new URLSearchParams(window.location.search);
-let fromDateStr = urlParams.get('from') || '28.07.2025'; // Дефолт
-let toDateStr = urlParams.get('to') || '30.07.2025'; // Дефолт
+let fromDateStr = urlParams.get('from') || 'Засекречено'; // Дефолт
+let toDateStr = urlParams.get('to') || 'Засекречено'; // Дефолт
 let userName = urlParams.get('name') || 'гражданин'; // Новый параметр name, дефолт 'гражданин'
 
 // Парсим даты
