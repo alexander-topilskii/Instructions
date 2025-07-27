@@ -42,8 +42,8 @@ function parseDate(dateStr) {
 // Форматируем строки для плейсхолдеров
 const startDate = parseDate(fromDateStr);
 const endDate = parseDate(toDateStr);
-const startFull = `${startDate.day} ${startDate.month} ${startDate.year} года, 08:00`;
-const endFull = `${endDate.day} ${endDate.month} ${endDate.year} года, 20:00`;
+const startFull = `${startDate.day} ${startDate.month} ${startDate.year}`;
+const endFull = `${endDate.day} ${endDate.month} ${endDate.year}`;
 const startShort = `${startDate.day} ${startDate.month}`;
 const endShort = `${endDate.day} ${endDate.month}`;
 
@@ -62,7 +62,7 @@ function updateImage() {
     if (images.length > 0) {
         imageElement.src = images[currentIndex];
         imageElement.style.display = 'block'; // Показываем изображение
-        counterElement.textContent = `Page ${currentIndex + 1}/${images.length}`;
+        counterElement.textContent = `Страница ${currentIndex + 1}/${images.length}`;
 
         const num = imageFiles[currentIndex].num;
         let html = htmlMap.get(num) || '';
