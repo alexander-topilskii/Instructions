@@ -2,8 +2,8 @@ body {
     background-color: #000;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start; /* Изменено с center на flex-start для верхнего позиционирования */
+    min-height: 100vh; /* Изменено на min-height, чтобы избежать обрезки на маленьких экранах */
     margin: 0;
     font-family: 'Courier New', monospace;
     color: #00ff00; /* Зелёный как в Pip-Boy */
@@ -17,6 +17,7 @@ body {
     width: 600px;
     box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); /* Glow эффект */
     position: relative;
+    margin-top: 40px; /* Базовый отступ сверху */
 }
 
 .screen {
@@ -89,6 +90,19 @@ button:hover {
     margin-top: 20px;
     text-align: left; /* Выровнено по левому краю */
     font-size: 14px;
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 600px) {
+    .pip-boy {
+        width: 90%; /* Адаптация ширины */
+        margin-top: 60px; /* Больше отступа сверху на мобильных */
+        padding: 10px; /* Уменьшение padding для мобильных */
+    }
+
+    .screen {
+        height: 300px; /* Уменьшение высоты экрана для мобильных */
+    }
 }
 
 @keyframes flicker {
