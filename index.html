@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault-Tec Birthday Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="pip-boy">
+        <div class="screen">
+            <img id="current-image" src="" alt="Vault-Tec Instruction" style="display: none;"> <!-- Скрыто изначально -->
+            <div id="loading">Loading images...</div>
+            <div class="scanlines"></div>
+        </div>
+        <div class="controls">
+            <button onclick="prevImage()">◄ PREV</button>
+            <span id="page-counter">Page 1/10</span>
+            <button onclick="nextImage()">NEXT ►</button>
+        </div>
+        <div class="info">
+            <p>Welcome to Vault-Tec Birthday Party!</p>
+            <p>Date: [Вставь дату], Location: [Вставь место]</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

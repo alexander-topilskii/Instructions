@@ -1,0 +1,98 @@
+body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    color: #00ff00; /* Зелёный как в Pip-Boy */
+}
+
+.pip-boy {
+    background-color: #1a1a1a;
+    border: 5px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    width: 600px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); /* Glow эффект */
+    position: relative;
+}
+
+.screen {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-color: #003300;
+    overflow: hidden;
+    border: 2px solid #00ff00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: sepia(0.2) hue-rotate(120deg) brightness(1.2); /* Ретро-зелёный фильтр */
+    animation: flicker 0.1s infinite alternate; /* Лёгкое мерцание */
+}
+
+#loading {
+    color: #00ff00;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+}
+
+.scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.05) 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+button {
+    background-color: #003300;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #006600;
+}
+
+#page-counter {
+    align-self: center;
+    font-size: 18px;
+}
+
+.info {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.95; }
+    100% { opacity: 1; }
+}
