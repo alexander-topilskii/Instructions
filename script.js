@@ -15,6 +15,7 @@ let currentIndex = 0;
 const imageElement = document.getElementById('current-image');
 const counterElement = document.getElementById('page-counter');
 const loadingElement = document.getElementById('loading');
+const infoElement = document.querySelector('.info');
 
 // Массив месяцев на русском
 const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
@@ -46,6 +47,7 @@ function updateImage() {
         imageElement.src = images[currentIndex];
         imageElement.style.display = 'block'; // Показываем изображение
         counterElement.textContent = `Page ${currentIndex + 1}/${images.length}`;
+        infoElement.style.display = (currentIndex === 0) ? 'block' : 'none'; // Текст только на первой странице
     } else {
         counterElement.textContent = 'No images found';
     }

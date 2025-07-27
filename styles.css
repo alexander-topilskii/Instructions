@@ -35,8 +35,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: sepia(0.2) hue-rotate(120deg) brightness(1.2); /* Ретро-зелёный фильтр */
-    animation: flicker 0.1s infinite alternate; /* Лёгкое мерцание */
+    /* Убраны эффекты: фильтр и мерцание */
 }
 
 #loading {
@@ -74,7 +73,7 @@ button {
     padding: 10px 20px;
     cursor: pointer;
     font-family: inherit;
-    transition: background-color 0.3s; /* Исправлено: background-color вместо background */
+    transition: background-color 0.3s;
 }
 
 button:hover {
@@ -88,7 +87,7 @@ button:hover {
 
 .info {
     margin-top: 20px;
-    text-align: center;
+    text-align: left; /* Выровнено по левому краю */
     font-size: 14px;
 }
 
