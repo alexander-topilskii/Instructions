@@ -1,13 +1,13 @@
 // Твои данные: username и repo (без .github.io)
-const githubUsername = 'alexander-topilskii';
-const githubRepo = 'Instructions';
-const imagesFolder = 'imgs'; // Папка с изображениями
+const githubUsername = 'YOUR_USERNAME';
+const githubRepo = 'YOUR_REPO';
+const imagesFolder = 'images'; // Папка с изображениями
 
 // Поддерживаемые расширения
 const supportedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
 
 // API URL для получения содержимого папки
-const apiUrl = `https://api.github.com/repos/${githubUsername}/${githubRepo}/contents/${imagesFolder}`;
+const apiUrl = `https://api.github.com/repos/${githubUsername}/${githubRepo}/${imagesFolder}`;
 
 // Массив для изображений (будет заполнен динамически)
 let images = [];
@@ -24,6 +24,10 @@ const months = ['января', 'февраля', 'марта', 'апреля', 
 const urlParams = new URLSearchParams(window.location.search);
 let fromDateStr = urlParams.get('from') || '28.07.2025'; // Дефолт
 let toDateStr = urlParams.get('to') || '30.07.2025'; // Дефолт
+let userName = urlParams.get('name') || 'гражданин'; // Новый параметр name, дефолт 'гражданин'
+
+// Устанавливаем имя
+document.getElementById('user-name').textContent = userName;
 
 // Парсим даты
 function parseDate(dateStr) {
@@ -36,8 +40,8 @@ const startDate = parseDate(fromDateStr);
 const endDate = parseDate(toDateStr);
 
 // Устанавливаем текст в DOM
-document.getElementById('start-full').textContent = `${startDate.day} ${startDate.month} ${startDate.year}`;
-document.getElementById('end-full').textContent = `${endDate.day} ${endDate.month} ${endDate.year}`;
+document.getElementById('start-full').textContent = `${startDate.day} ${startDate.month} ${startDate.year} года, 08:00`;
+document.getElementById('end-full').textContent = `${endDate.day} ${endDate.month} ${endDate.year} года, 20:00`;
 document.getElementById('start-short').textContent = `${startDate.day} ${startDate.month}`;
 document.getElementById('end-short').textContent = `${endDate.day} ${endDate.month}`;
 
