@@ -36,8 +36,8 @@ const startDate = parseDate(fromDateStr);
 const endDate = parseDate(toDateStr);
 
 // Устанавливаем текст в DOM
-document.getElementById('start-full').textContent = `${startDate.day} ${startDate.month} ${startDate.year} года, 08:00`;
-document.getElementById('end-full').textContent = `${endDate.day} ${endDate.month} ${endDate.year} года, 20:00`;
+document.getElementById('start-full').textContent = `${startDate.day} ${startDate.month} ${startDate.year}`;
+document.getElementById('end-full').textContent = `${endDate.day} ${endDate.month} ${endDate.year}`;
 document.getElementById('start-short').textContent = `${startDate.day} ${startDate.month}`;
 document.getElementById('end-short').textContent = `${endDate.day} ${endDate.month}`;
 
