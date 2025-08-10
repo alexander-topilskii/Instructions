@@ -17,7 +17,10 @@ const contentApiUrl = `https://api.github.com/repos/${githubUsername}/${githubRe
 let images = [];
 let imageFiles = []; // Для хранения num
 let htmlMap = new Map();
-let currentIndex = 0;
+// Получаем параметры из URL
+const urlParams = new URLSearchParams(window.location.search);
+let pageParam = parseInt(urlParams.get('page'), 10);
+let currentIndex = isNaN(pageParam) ? 0 : Math.max(pageParam - 1, 0);
 const imageElement = document.getElementById('current-image');
 const counterElement = document.getElementById('page-counter');
 const loadingElement = document.getElementById('loading');
@@ -27,8 +30,6 @@ const distortionElement = document.querySelector('.distortion');
 // Массив месяцев на русском
 const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
 
-// Получаем параметры из URL
-const urlParams = new URLSearchParams(window.location.search);
 let fromDateStr = urlParams.get('from') || 'Засекречено'; // Дефолт
 let toDateStr = urlParams.get('to') || 'Засекречено'; // Дефолт
 let userName = urlParams.get('name') || 'гражданин'; // Новый параметр name, дефолт 'гражданин'
@@ -57,9 +58,18 @@ function replacePlaceholders(html) {
         .replace(/{end-short}/g, endShort);
 }
 
+// Обновляет параметр страницы в URL без перезагрузки
+function updateUrl() {
+    const params = new URLSearchParams(window.location.search);
+    params.set('page', currentIndex + 1);
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    window.history.replaceState(null, '', newUrl);
+}
+
 // Функция обновления изображения и контента
 function updateImage() {
     if (images.length > 0) {
+        currentIndex = Math.min(Math.max(currentIndex, 0), images.length - 1);
         imageElement.src = images[currentIndex];
         imageElement.style.display = 'block'; // Показываем изображение
         counterElement.textContent = `Страница ${currentIndex + 1}/${images.length}`;
@@ -69,6 +79,7 @@ function updateImage() {
         html = replacePlaceholders(html);
         contentElement.innerHTML = html;
         contentElement.style.display = html ? 'block' : 'none';
+        updateUrl();
     } else {
         counterElement.textContent = 'No images found';
     }
