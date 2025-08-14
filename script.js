@@ -176,7 +176,7 @@ fetch(imagesApiUrl)
 
 // Эффект ряби с использованием шумового фильтра
 (function () {
-    const screen = document.querySelector('.screen');
+    const page = document.body;
     const tear = document.getElementById('tear');
     const noise = document.getElementById('noise');
     const disp = document.getElementById('disp');
@@ -198,8 +198,8 @@ fetch(imagesApiUrl)
         const scale = Math.round(random(8, 18));
         disp.setAttribute('scale', String(scale));
 
-        screen.classList.add('ripple');
-        setTimeout(() => screen.classList.remove('ripple'), RIPPLE_MS);
+        page.classList.add('ripple');
+        setTimeout(() => page.classList.remove('ripple'), RIPPLE_MS);
 
         scheduleNext();
     }
