@@ -83,6 +83,34 @@ body {
     animation: distort 0.5s ease-in-out forwards;
 }
 
+/* Полоска-рывок и эффект ряби */
+.tear {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: var(--tearY, 40%);
+    height: 12px;
+    opacity: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.09) 50%, transparent 100%);
+    mix-blend-mode: screen;
+    z-index: 3;
+}
+
+.screen.ripple .tear {
+    opacity: .85;
+    animation: tearShift 120ms ease-in-out 3 alternate;
+}
+
+@keyframes tearShift {
+    from { transform: translateX(-6px); }
+    to { transform: translateX(6px); }
+}
+
+.screen.ripple {
+    filter: url(#crt-warp);
+}
+
 @keyframes distort {
     0% { opacity: 0; background-position: 0 0; }
     50% { opacity: 0.3; background-position: 0 100%; }

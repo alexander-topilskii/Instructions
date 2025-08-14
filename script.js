@@ -173,3 +173,41 @@ fetch(imagesApiUrl)
         loadingElement.textContent = 'Error loading images or content';
         counterElement.textContent = 'Error';
     });
+
+// Эффект ряби с использованием шумового фильтра
+(function () {
+    const screen = document.querySelector('.screen');
+    const tear = document.getElementById('tear');
+    const noise = document.getElementById('noise');
+    const disp = document.getElementById('disp');
+
+    const RIPPLE_MS = 160;
+    const minDelay = 4000;
+    const maxDelay = 8000;
+
+    function random(min, max) { return Math.random() * (max - min) + min; }
+
+    function triggerRipple() {
+        const y = Math.round(random(8, 92));
+        tear.style.setProperty('--tearY', y + '%');
+
+        const baseX = random(0.0005, 0.1020).toFixed(4);
+        const baseY = random(0.85, 1.85).toFixed(2);
+        noise.setAttribute('baseFrequency', `${baseX} ${baseY}`);
+
+        const scale = Math.round(random(8, 18));
+        disp.setAttribute('scale', String(scale));
+
+        screen.classList.add('ripple');
+        setTimeout(() => screen.classList.remove('ripple'), RIPPLE_MS);
+
+        scheduleNext();
+    }
+
+    function scheduleNext() {
+        const t = Math.round(random(minDelay, maxDelay));
+        setTimeout(triggerRipple, t);
+    }
+
+    scheduleNext();
+})();
