@@ -4,6 +4,19 @@ const githubRepo = 'Instructions';
 const imagesFolder = 'imgs'; // Папка с изображениями
 const contentFolder = 'rules'; // Новая папка с HTML
 
+// Параметры эффекта ряби
+const rippleDuration = 160; // Длительность эффекта в миллисекундах
+const rippleMinDelay = 4000; // Минимальная задержка между срабатываниями
+const rippleMaxDelay = 8000; // Максимальная задержка между срабатываниями
+const rippleYMin = 8; // Минимальное значение Y для разрыва
+const rippleYMax = 92; // Максимальное значение Y для разрыва
+const rippleBaseXMin = 0.0005; // Минимальная базовая частота по X
+const rippleBaseXMax = 0.1020; // Максимальная базовая частота по X
+const rippleBaseYMin = 0.85; // Минимальная базовая частота по Y
+const rippleBaseYMax = 1.85; // Максимальная базовая частота по Y
+const rippleScaleMin = 8; // Минимальный масштаб искажения
+const rippleScaleMax = 18; // Максимальный масштаб искажения
+
 // Поддерживаемые расширения для изображений
 const supportedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
 
@@ -177,37 +190,32 @@ fetch(imagesApiUrl)
 // Эффект ряби с использованием шумового фильтра
 (function () {
     const page = document.body;
-    const tear = document.getElementById('tear');
-    const noise = document.getElementById('noise');
-    const disp = document.getElementById('disp');
+  const tear = document.getElementById('tear');
+  const noise = document.getElementById('noise');
+  const disp = document.getElementById('disp');
+  function random(min, max) { return Math.random() * (max - min) + min; }
 
-    const RIPPLE_MS = 160;
-    const minDelay = 4000;
-    const maxDelay = 8000;
+  function triggerRipple() {
+      const y = Math.round(random(rippleYMin, rippleYMax));
+      tear.style.setProperty('--tearY', y + '%');
 
-    function random(min, max) { return Math.random() * (max - min) + min; }
+      const baseX = random(rippleBaseXMin, rippleBaseXMax).toFixed(4);
+      const baseY = random(rippleBaseYMin, rippleBaseYMax).toFixed(2);
+      noise.setAttribute('baseFrequency', `${baseX} ${baseY}`);
 
-    function triggerRipple() {
-        const y = Math.round(random(8, 92));
-        tear.style.setProperty('--tearY', y + '%');
+      const scale = Math.round(random(rippleScaleMin, rippleScaleMax));
+      disp.setAttribute('scale', String(scale));
 
-        const baseX = random(0.0005, 0.1020).toFixed(4);
-        const baseY = random(0.85, 1.85).toFixed(2);
-        noise.setAttribute('baseFrequency', `${baseX} ${baseY}`);
+      page.classList.add('ripple');
+      setTimeout(() => page.classList.remove('ripple'), rippleDuration);
 
-        const scale = Math.round(random(8, 18));
-        disp.setAttribute('scale', String(scale));
+      scheduleNext();
+  }
 
-        page.classList.add('ripple');
-        setTimeout(() => page.classList.remove('ripple'), RIPPLE_MS);
+  function scheduleNext() {
+      const t = Math.round(random(rippleMinDelay, rippleMaxDelay));
+      setTimeout(triggerRipple, t);
+  }
 
-        scheduleNext();
-    }
-
-    function scheduleNext() {
-        const t = Math.round(random(minDelay, maxDelay));
-        setTimeout(triggerRipple, t);
-    }
-
-    scheduleNext();
+  scheduleNext();
 })();
